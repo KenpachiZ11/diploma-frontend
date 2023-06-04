@@ -1,0 +1,26 @@
+.map-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__settings {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    &__settings > div {
+        width: 100% !important;
+        height: 400px !important;
+
+        filter: brightness(70%);
+            -ms-filter: brightness(70%);
+            -webkit-filter: brightness(70%);
+            -moz-filter: brightness(70%);   
+            -o-filter: brightness(70%);  
+        // height: 100% !important;
+        // max-height: 700px !important;
+    }
+}

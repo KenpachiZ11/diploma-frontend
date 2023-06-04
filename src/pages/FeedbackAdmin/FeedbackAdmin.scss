@@ -1,0 +1,23 @@
+.feedback-admin {
+    width: 90%;
+    height: auto;
+    // background: grey;
+    margin: 0 auto;
+
+    &__title {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &-box {
+            border: 1px solid;
+        }
+    }
+}

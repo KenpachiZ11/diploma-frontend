@@ -1,0 +1,31 @@
+.header-wrapper {
+    width: 100%;
+    display: flex;
+    height: auto;
+    background: black;
+    &__logo {
+        padding-left: 30px;
+        width: 30%;
+        font-family: 'Shadows Into Light';
+        font-style: oblique;
+        font-weight: 700;
+        font-size: 32px;
+        color: white;
+    }
+
+    &__links {
+        width: 70%;
+        ul {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+            li {
+                padding-right: 30px;
+                a {
+                    color:white;
+                }
+            }
+        }
+    }
+}
