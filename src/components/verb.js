@@ -12,4 +12,4 @@
 // export default dataCard;
 
 
-// console.log();
+console.log();
