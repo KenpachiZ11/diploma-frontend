@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/diploma-frontend/static/css/main.073c9b0a.css",
-    "main.js": "/diploma-frontend/static/js/main.727416e8.js",
-    "static/js/787.e63db5ff.chunk.js": "/diploma-frontend/static/js/787.e63db5ff.chunk.js",
-    "static/media/logo.svg": "/diploma-frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/diploma-frontend/static/css/main.dc63b051.css",
+    "main.js": "/diploma-frontend/static/js/main.a26b541a.js",
+    "static/media/ImageForHome.jpg": "/diploma-frontend/static/media/ImageForHome.15bba72786d7b2ed7035.jpg",
+    "static/media/check.jpg": "/diploma-frontend/static/media/check.1ea7b712a8e0c448c057.jpg",
+    "static/media/author.jpg": "/diploma-frontend/static/media/author.b956764029a7c57adede.jpg",
+    "static/media/repair.jpg": "/diploma-frontend/static/media/repair.f95985785d4f75ac88cc.jpg",
     "index.html": "/diploma-frontend/index.html",
-    "main.073c9b0a.css.map": "/diploma-frontend/static/css/main.073c9b0a.css.map",
-    "main.727416e8.js.map": "/diploma-frontend/static/js/main.727416e8.js.map",
-    "787.e63db5ff.chunk.js.map": "/diploma-frontend/static/js/787.e63db5ff.chunk.js.map"
+    "main.dc63b051.css.map": "/diploma-frontend/static/css/main.dc63b051.css.map",
+    "main.a26b541a.js.map": "/diploma-frontend/static/js/main.a26b541a.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.727416e8.js"
+    "static/css/main.dc63b051.css",
+    "static/js/main.a26b541a.js"
   ]
 }
