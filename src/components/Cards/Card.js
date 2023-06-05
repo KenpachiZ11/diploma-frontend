@@ -21,8 +21,7 @@ export const Card = ({ newPostData }) => {
                     <div className='about-page__card'>
                         <div className='about-page__card-image'>
                             <img 
-                                // src='https://get.wallhere.com/photo/illustration-children-teddy-bears-sleeping-painting-artwork-fan-art-1464585.jpg' 
-                                src={!!linkImage ? linkImage : 'https://images.prom.ua/2161063091_w640_h640_silikonovyj-nochnik-detskij.jpg'}
+                                src={linkImage}
                                 alt={title}
                                 className='about-page__card-image-img'
                             ></img>

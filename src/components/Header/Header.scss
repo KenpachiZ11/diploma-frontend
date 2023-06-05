@@ -5,7 +5,8 @@
     background: black;
     &__logo {
         padding-left: 30px;
-        width: 30%;
+        // width: 35%;
+        width: 100%;
         font-family: 'Shadows Into Light';
         font-style: oblique;
         font-weight: 700;
@@ -14,7 +15,7 @@
     }
 
     &__links {
-        width: 70%;
+        // width: 100%;
         ul {
             display: flex;
             justify-content: flex-end;
@@ -24,6 +25,36 @@
                 padding-right: 30px;
                 a {
                     color:white;
+                }
+                a:hover {
+                    color:grey;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .header-wrapper {
+        &__logo {
+            font-size: 22px;
+        }
+        &__links {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .header-wrapper {
+        &__logo {
+            font-size: 20px;
+        }
+        &__links {
+            font-size: 10px;
+            ul {
+                li {
+                    padding-right: 10px;
                 }
             }
         }

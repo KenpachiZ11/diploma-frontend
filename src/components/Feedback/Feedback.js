@@ -93,7 +93,7 @@ export const Feedback = () => {
                         />
                     </label>
                     <label>
-                        <input 
+                        <textarea
                             type="text" 
                             placeholder='Сообщение'
                             name="sms" 
@@ -103,7 +103,9 @@ export const Feedback = () => {
                     </label>
                     {/* {message} */}
 
+                <div>
                     <input type="submit" value='Отправить'/>
+                </div>
                 </form>
             </div>
 

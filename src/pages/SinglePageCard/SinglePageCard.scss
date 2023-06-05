@@ -1,6 +1,9 @@
 .single-page {
     // padding: 0 10px;
     display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 30px auto;
 
     &__image {
         // width: 90%;
