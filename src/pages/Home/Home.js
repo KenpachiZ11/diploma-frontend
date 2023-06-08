@@ -36,7 +36,7 @@ export const Home = () => {
             </div>
             <div className='home-page__footer'>
                 <div className='home-page__footer-title'>Партнеры</div>
-                <div className='home-page__footer-text'>IThub Collage</div>
+                <div className='home-page__footer-text'>IThub College</div>
             </div>
         </div>
     )

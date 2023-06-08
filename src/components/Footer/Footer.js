@@ -4,23 +4,19 @@ import { PersonCircle, BoxArrowInLeft } from 'react-bootstrap-icons'
 import './Footer.scss';
 
 export const Footer = () => {
-    const user = localStorage.getItem("user")
+    const user = localStorage.getItem('user');
+    const [date, setDate] = useState(new Date());
 
-    // const [date, setDate] = useState();
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setDate(new Date());
+        }, 1000);
+        return () => {
+            clearInterval(timer);
+        }
+    }, [])
 
-    // useEffect(() => {
-    //     const day = new Date().getDay();
-    //     const month = new Date().getMonth();
-    //     const year = new Date().getFullYear();
-    //     const minutes = new Date().getMinutes();
-    //     const hours = new Date().getHours();
-
-    //     setDate(new Date(year, month, day, hours, minutes));
-
-    // console.log(date)
-
-    // }, [date])
-
+    const fullYear = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
     return (
         <div className="footer">
@@ -42,7 +38,7 @@ export const Footer = () => {
             </div>
 
             <div className="footer-row__author">
-                ITHub Copyright © 2023 ITHub - All rights reserved || Designed By: Bykovskij 
+                ITHub Copyright © {fullYear} ITHub - All rights reserved || Designed By: Bykovskij 
             </div>
         </div>
     )
