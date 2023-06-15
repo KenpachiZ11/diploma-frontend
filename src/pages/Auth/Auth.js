@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Auth.scss';
 
 export const Auth = () => {
     const [auth, setAuth] = useState(true);
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [pwd, setPwd] = useState("");
-	const [testPwd, setTestPwd] = useState("");
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [pwd, setPwd] = useState('');
+	const [testPwd, setTestPwd] = useState('');
+
+	const [message, setMessage] = useState([]);
+	useEffect(() => {
+        fetch('/auth')
+            .then(res => res.json())
+            .then(data => setMessage(data.message));
+    }, []);
+	console.log(message)
 
     const sendForm = (e) => {
         e.preventDefault();
@@ -14,8 +22,28 @@ export const Auth = () => {
 
         if(!auth) {
             body.name = name;
+
+			fetch('/auth', {
+				'method': 'POST',
+				'headers': {
+					'Content-Type': 'application/json',
+					// 'Accept': 'application/json, text/plain, */*',
+					// 'Content-type': 'text/plain'
+				},
+				body: JSON.stringify({ name, email, password: pwd })     
+			})
+			.then(res => res.json())
+			.then(json => {
+				setName(json.inputs)
+				setEmail(json.inputs)
+				setPwd(json.inputs)
+			})
+
+			// setTimeout(() => {
+			// 	clearForm();
+			// }, 1000);
         }
-        // console.log(body);
+        console.log(body);
     }
 
     const switchAuth = (e) => {
@@ -25,14 +53,14 @@ export const Auth = () => {
     }
 
 	const clearForm = () => {
-		setName("");
-		setEmail("");
-		setPwd("");
-		setTestPwd("");
+		setName('');
+		setEmail('');
+		setPwd('');
+		setTestPwd('');
 	}
 
     return (
-        <form onSubmit={sendForm} className='auth-form' action="/" method="post">
+        <form onSubmit={sendForm} className='auth-form'>
 				{!auth && 
                 <label>
 					{/* Имя пользователя */}
@@ -81,7 +109,7 @@ export const Auth = () => {
 						{auth ? "Войти" : "Создать аккаунт" }
 					</button>
 					<button 
-						// href=""
+						// href=''
 						// className="modal-link"
 						onClick={switchAuth}
 					>
