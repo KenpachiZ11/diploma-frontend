@@ -14,7 +14,7 @@ export const Card = ({ newPostData }) => {
 
             return (
                 <Link 
-                    to={`/about/${_id}`} 
+                    to={`https://danya.pewiwe.ru/about/${_id}`} 
                     key={_id}
                     className='about-page__link'
                 >

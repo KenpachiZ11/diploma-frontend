@@ -21,7 +21,7 @@ export const Feedback = () => {
             return false;
         }
 
-        fetch('/contacts', {
+        fetch('https://danya.pewiwe.ru/contacts', {
             'method': 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export const Feedback = () => {
     }
 
     useEffect(() => {
-        fetch('/contacts')
+        fetch('https://danya.pewiwe.ru/contacts')
             .then(res => res.json())
             .then(data => setMessage(data.message));
     }, []);

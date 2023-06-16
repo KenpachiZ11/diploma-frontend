@@ -5,7 +5,7 @@ export const Home = () => {
     const [message, setMessage] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000')
+        fetch('https://danya.pewiwe.ru/')
             .then(res => res.json())
             .then(data => setMessage(data.message));
     }, []);

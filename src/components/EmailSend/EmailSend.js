@@ -16,7 +16,7 @@ const EmailSend = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         
-        fetch('/id', {
+        fetch('https://danya.pewiwe.ru/id', {
             'method': 'POST',
             'headers': {
                 'Content-Type': 'application/json',

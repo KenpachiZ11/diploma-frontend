@@ -10,7 +10,7 @@ export const Auth = () => {
 
 	const [message, setMessage] = useState([]);
 	useEffect(() => {
-        fetch('/auth')
+        fetch('https://danya.pewiwe.ru/auth')
             .then(res => res.json())
             .then(data => setMessage(data.message));
     }, []);

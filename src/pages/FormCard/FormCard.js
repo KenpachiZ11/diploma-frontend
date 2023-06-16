@@ -21,7 +21,7 @@ export const FormCard = () => {
             return false;
         }
 
-        fetch('/form', {
+        fetch('https://danya.pewiwe.ru/form', {
             'method': 'POST',
             'headers': {
                 'Content-Type': 'application/json',
