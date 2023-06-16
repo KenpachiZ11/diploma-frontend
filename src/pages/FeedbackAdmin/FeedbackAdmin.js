@@ -7,7 +7,7 @@ export const FeedbackAdmin = () => {
     let display = null;
 
     useEffect(() => {
-        fetch('/https://danya.pewiwe.ru/feedback-admin', {
+        fetch('/feedback-admin', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

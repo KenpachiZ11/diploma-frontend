@@ -4,7 +4,7 @@ import './Button.scss';
 
 export const Button = (props) => {
 
-    console.log(props)
+    // console.log(props)
     const handleClick = (e) => {
         e.preventDefault();
         props.setActive(true);

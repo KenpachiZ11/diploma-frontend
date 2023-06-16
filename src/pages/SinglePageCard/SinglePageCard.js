@@ -11,7 +11,7 @@ export const SinglePageCard = () => {
     const [active, setActive] = useState(false);
 
     useEffect(() => {
-        fetch(`https://danya.pewiwe.ru/about/${id}`, {
+        fetch(`/about/${id}`, {
             method: 'GET'
         })
         .then(res => res.json())

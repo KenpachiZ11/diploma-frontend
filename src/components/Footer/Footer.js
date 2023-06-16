@@ -16,7 +16,7 @@ export const Footer = () => {
         }
     }, [])
 
-    const fullYear = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const fullYear = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
     return (
         <div className="footer">

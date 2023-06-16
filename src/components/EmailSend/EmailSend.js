@@ -3,6 +3,15 @@ import './EmailSend.scss';
 
 const EmailSend = (props) => {
     const { title, description, author, linkImage } = props.newPostData;
+    // const [message, setMessage] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('/about/id')
+    //         .then(res => res.json())
+    //         .then(data => setMessage(data.message));
+    // }, []);
+
+    // console.log(message)
 
     const [msg, setMsg] = useState('');
     const [user, setUser] = useState({
@@ -16,7 +25,7 @@ const EmailSend = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         
-        fetch('https://danya.pewiwe.ru/id', {
+        fetch('/about/id', {
             'method': 'POST',
             'headers': {
                 'Content-Type': 'application/json',

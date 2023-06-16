@@ -7,7 +7,7 @@ const Cards = () => {
     const [newPostData, setNewPostData] = useState([]);
 
     useEffect(() => {
-        fetch(`https://danya.pewiwe.ru/about`, {
+        fetch(`/about`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
