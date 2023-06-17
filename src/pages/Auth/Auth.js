@@ -8,13 +8,13 @@ export const Auth = () => {
 	const [pwd, setPwd] = useState('');
 	const [testPwd, setTestPwd] = useState('');
 
-	const [message, setMessage] = useState([]);
-	useEffect(() => {
-        fetch('https://danya.pewiwe.ru/auth')
-            .then(res => res.json())
-            .then(data => setMessage(data.message));
-    }, []);
-	console.log(message)
+	// const [message, setMessage] = useState([]);
+	// useEffect(() => {
+    //     fetch('/users')
+    //         .then(res => res.json())
+    //         .then(data => setMessage(data.message));
+    // }, []);
+	// console.log(message)
 
     const sendForm = (e) => {
         e.preventDefault();
@@ -23,7 +23,7 @@ export const Auth = () => {
         if(!auth) {
             body.name = name;
 
-			fetch('/auth', {
+			fetch('/users', {
 				'method': 'POST',
 				'headers': {
 					'Content-Type': 'application/json',

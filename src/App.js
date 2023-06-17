@@ -25,7 +25,7 @@ function App() {
           <Route path='/contacts' element={<Contacts/>} />
           <Route path='/feedback-admin' element={<FeedbackAdmin/>} />
           <Route path='/person' element={<Person/>} />
-          <Route path='/auth' element={<Auth/>} />
+          <Route path='/users' element={<Auth/>} />
         </Route>
       </Routes>
     </>

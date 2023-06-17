@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "https://danya.pewiwe.ru/",
+  "proxy": "https://danya.pewiwe.ru",
   "private": true,
   "homepage": "https://KenpachiZ11.github.io/diploma-frontend",
   "dependencies": {
