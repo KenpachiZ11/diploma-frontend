@@ -1,36 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
+import { useParams } from 'react-router-dom';
+import Context from '../../Context';
 import './EmailSend.scss';
 
 const EmailSend = (props) => {
+    const { api, user } = useContext(Context);
+    const { id } = useParams();
     const { title, description, author, linkImage } = props.newPostData;
 
     const [msg, setMsg] = useState('');
-    const [user, setUser] = useState({
+    const [users, setUser] = useState({
         to: '',
         subject: '',
         text: { title, description, author, linkImage }
     });
 
-    const { to, subject} = user;
+    const { to, subject} = users;
     
     const onSubmit = (e) => {
         e.preventDefault();
         
-        fetch('/about/id', {
-            'method': 'POST',
-            'headers': {
-                'Content-Type': 'application/json',
-                // 'Accept': 'application/json, text/plain, */*',
-                // 'Content-type': 'text/plain'
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(res => {
-                setMsg(res.user)
-            })
+        api.emailSend(id, users)
+            .then(res => setMsg(res.users))
     
-            console.log(user, 'user')
+            console.log(users, 'users')
             console.log(msg, 'msg')
     };
 
@@ -60,7 +53,7 @@ const EmailSend = (props) => {
                 />
             </label>
 
-            <input type="submit" value='Отправить'/>
+            <input type="submit" value='Отправить' id='btn'/>
             
         </form>
     );

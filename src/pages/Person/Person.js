@@ -1,9 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Context from '../../Context';
+import './Person.scss';
+import iconsAuthor from '../../images/iconsAuthor.png';
 
 export const Person = () => {
+    const { user } = useContext(Context);
+    const nav = useNavigate();
+    const { email, name, status } = user;
+    // const [isLoggedin, setIsLoggedin] = useState(false);
+    console.log(user)
+
+    const logout = () => {
+        localStorage.removeItem('user');
+        nav('/auth');
+        window.location.reload();
+    }
+
+    // useEffect(() => {
+        // logout();
+    // }, [user]);
+
     return (
-        <div>
-            
+        <div className='person-page'>
+            <div className='person-page__info'>
+                <div>
+                    <div>name: {name}</div>
+                    <div>email: {email}</div>
+                    <div>status: {status}</div>
+                    <button onClick={() => logout()}>LogOut</button>
+                </div>
+                <div>
+                    <img src={iconsAuthor} alt='person'></img>
+                </div>
+            </div>
+            <div className='person-page__product'></div>
         </div>
     )
 }

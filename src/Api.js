@@ -94,6 +94,17 @@ class API {
         })
             .then(res => res.json())
     }
+
+    emailSend(id, data) {
+        return fetch(`${this.path}/about/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+    }
 }
 
 export default API;

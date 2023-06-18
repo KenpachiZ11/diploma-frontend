@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Layout } from './components/Layout/Layout';
 import './App.scss';
 import Context from './Context';
@@ -11,16 +11,23 @@ import { Home } from './pages/Home/Home';
 import { SinglePageCard } from './pages/SinglePageCard/SinglePageCard';
 import { FormCard } from './pages/FormCard/FormCard';
 import { FeedbackAdmin } from './pages/FeedbackAdmin/FeedbackAdmin';
-import { Person } from 'react-bootstrap-icons';
+import { Person } from './pages/Person/Person';
 import { Auth } from './pages/Auth/Auth';
 
 
 function App() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || {});
   const api = new API();
+
+  useEffect(()=> {
+    console.log(user);
+  }, [user])
 
   return (
     <Context.Provider value={{
       api,
+      user, 
+      setUser
     }}>
       <Routes>
         <Route path='/' element={<Layout/>}>

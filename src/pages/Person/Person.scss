@@ -1,0 +1,14 @@
+.person-page {
+    background: rgba($color: #c69f9f, $alpha: .4);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__info {
+        display: flex;
+    }
+    &__product {
+        display: flex;
+    }
+}
