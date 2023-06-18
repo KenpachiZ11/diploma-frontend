@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import Context from '../../Context';
 import './Auth.scss';
 
 export const Auth = () => {
+	const {api} = useContext(Context);
+
     const [auth, setAuth] = useState(true);
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [pwd, setPwd] = useState('');
 	const [testPwd, setTestPwd] = useState('');
-
-	// const [message, setMessage] = useState([]);
-	// useEffect(() => {
-    //     fetch('/users')
-    //         .then(res => res.json())
-    //         .then(data => setMessage(data.message));
-    // }, []);
-	// console.log(message)
 
     const sendForm = (e) => {
         e.preventDefault();
@@ -23,27 +18,14 @@ export const Auth = () => {
         if(!auth) {
             body.name = name;
 
-			fetch('/users', {
-				'method': 'POST',
-				'headers': {
-					'Content-Type': 'application/json',
-					// 'Accept': 'application/json, text/plain, */*',
-					// 'Content-type': 'text/plain'
-				},
-				body: JSON.stringify({ name, email, password: pwd })     
-			})
-			.then(res => res.json())
+			api.addUser({ name, email, password: pwd })
 			.then(json => {
 				setName(json.inputs)
 				setEmail(json.inputs)
 				setPwd(json.inputs)
+				console.log(json)
 			})
-
-			// setTimeout(() => {
-			// 	clearForm();
-			// }, 1000);
         }
-        console.log(body);
     }
 
     const switchAuth = (e) => {
@@ -67,7 +49,7 @@ export const Auth = () => {
 					<input 
                         placeholder='Имя пользователя'
 						type="text" 
-						value={name} 
+						value={name || ''} 
 						onChange={(e) => setName(e.target.value)}
 					/>
 				</label>}
@@ -76,7 +58,7 @@ export const Auth = () => {
 					<input 
                         placeholder='Электронный адрес'
 						type="email" 
-						value={email} 
+						value={email || ''} 
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</label>
@@ -85,7 +67,7 @@ export const Auth = () => {
 					<input 
                         placeholder='Пароль'
 						type="password" 
-						value={pwd} 
+						value={pwd || ''} 
 						onChange={(e) => setPwd(e.target.value)}
 					/>
 				</label>
@@ -94,7 +76,7 @@ export const Auth = () => {
 					<input 
                         placeholder='Повторить пароль'
 						type="password" 
-						value={testPwd} 
+						value={testPwd || ''} 
 						onChange={(e) => setTestPwd(e.target.value)}
 						// style={testAccess}
 						// style={{border: "1px solid", backgroundColor: "blueviolet"}}

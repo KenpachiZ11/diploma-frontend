@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Card } from './Card';
-import './Cards.scss'
+import './Cards.scss';
+import Context from '../../Context';
 import { DataNull } from '../DataNull/DataNull';
-import { FilterComponentsCard } from '../FilterComponentsCard/FilterComponentsCard'
+import { FilterComponentsCard } from '../FilterComponentsCard/FilterComponentsCard';
 
 const Cards = () => {
+    const {api} = useContext(Context);
     const [newPostData, setNewPostData] = useState([]);
     const [filter, setFilter] = useState(newPostData);
 
     useEffect(() => {
-        fetch(`/about`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json, text/plain, */*',
-            },
-        })
-        .then(res => res.json())
-        .then(res => setNewPostData(res))
+        api.about()
+        .then(data => setNewPostData(data))
     }, []);
+    useEffect(() => {
+        setFilter(newPostData);
+    }, [newPostData])
 
 
     const handleFilterItem = (e) => {
@@ -32,7 +30,7 @@ const Cards = () => {
     return (
         <>  
             {
-                newPostData && newPostData.length > 0 
+                filter.length > 0 
                     ?
                     <>
                         <FilterComponentsCard onChange={handleFilterItem}/>

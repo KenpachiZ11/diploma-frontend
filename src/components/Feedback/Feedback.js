@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import './Feedback.scss';
+import Context from '../../Context';
 
 export const Feedback = () => {
+    const {api} = useContext(Context);
     const form = useRef(null);
     const [message, setMessage] = useState([]);
     const [inputs, setInputs] = useState({
@@ -21,31 +23,9 @@ export const Feedback = () => {
             return false;
         }
 
-        fetch('/contacts', {
-            'method': 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json, text/plain, */*',
-                // 'Content-type': 'text/plain'
-            },
-            body: JSON.stringify({ name, email, phone, sms })     
-        })
-        .then(res => res.json())
-        .then(json => {
-            console.log(json)
-            setInputs(json.inputs)
-        })
-        console.log(inputs)
-
+        api.contactsAdd({ name, email, phone, sms })
+        .then(json => setInputs(json.inputs))
     }
-
-    useEffect(() => {
-        fetch('/contacts')
-            .then(res => res.json())
-            .then(data => setMessage(data.message));
-    }, []);
-    
-    console.log(message)
 
     const handleChange = (e) => {
         // console.log(e)

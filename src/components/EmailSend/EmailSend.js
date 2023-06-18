@@ -3,15 +3,6 @@ import './EmailSend.scss';
 
 const EmailSend = (props) => {
     const { title, description, author, linkImage } = props.newPostData;
-    // const [message, setMessage] = useState([]);
-
-    // useEffect(() => {
-    //     fetch('/about/id')
-    //         .then(res => res.json())
-    //         .then(data => setMessage(data.message));
-    // }, []);
-
-    // console.log(message)
 
     const [msg, setMsg] = useState('');
     const [user, setUser] = useState({

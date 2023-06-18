@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import './SinglePageCard.scss';
+import Context from '../../Context';
 import { Button } from '../../components/Button/Button';
 import { Modal } from '../../components/Modal/Modal';
 
 export const SinglePageCard = () => {
+    const {api} = useContext(Context);
     const { id } = useParams();
     const [newPostData, setNewPostData] = useState([]);
     const [info, setInfo] = useState('Заказать работу');
     const [active, setActive] = useState(false);
 
     useEffect(() => {
-        fetch(`/about/${id}`, {
-            method: 'GET'
-        })
-        .then(res => res.json())
-        .then(res => { setNewPostData(res) })
+        api.singlePage(id)
+        .then(res => setNewPostData(res))
     }, [id]);
 
     const { title, description, author, linkImage } = newPostData;

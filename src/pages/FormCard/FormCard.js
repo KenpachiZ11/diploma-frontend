@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import Context from '../../Context';
 import './FormCard.scss';
 
 export const FormCard = () => {
+    const {api} = useContext(Context);
     const form = useRef(null);
     const [message, setMessage] = useState([]);
     const [inputs, setInputs] = useState({
@@ -21,21 +23,8 @@ export const FormCard = () => {
             return false;
         }
 
-        fetch('https://danya.pewiwe.ru/form', {
-            'method': 'POST',
-            'headers': {
-                'Content-Type': 'application/json',
-                // 'Accept': 'application/json, text/plain, */*',
-                // 'Content-type': 'text/plain'
-            },
-            body: JSON.stringify({ author, title, description, linkImage })     
-        })
-        .then(res => res.json())
-        .then(json => {
-            console.log(json)
-            setInputs(json.inputs)
-        })
-        console.log(inputs)
+        api.formCard({author, title, description, linkImage})
+            .then(json => setInputs(json.inputs))
 
         setInputs('');
     }
@@ -46,14 +35,6 @@ export const FormCard = () => {
         const value = e.target.value;
         setInputs(prevState  => ({...prevState, [name]: value}));
     };
-
-    useEffect(() => {
-        fetch('/form')
-            .then(res => res.json())
-            .then(data => setMessage(data.message));
-    }, []);
-
-    console.log(message)
 
     return (
         <div className='form-page'>

@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { DataNull } from '../../components/DataNull/DataNull';
+import Context from '../../Context';
 import './FeedbackAdmin.scss';
 
 export const FeedbackAdmin = () => {
+    const {api} = useContext(Context);
     const [feedback, getFeedback] = useState([]);
     let display = null;
 
     useEffect(() => {
-        fetch('/feedback-admin', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json, text/plain, */*',
-            },
-        })
-        .then(res => res.json())
+        api.feedbackAdmin()
         .then(res => getFeedback(res))
     }, [])
-
-    console.log(feedback, 'feedback');
 
     display = feedback.map(el => {
         const { email, name, phone, sms, _id } = el;
