@@ -5,7 +5,7 @@ import './Person.scss';
 import iconsAuthor from '../../images/iconsAuthor.png';
 
 export const Person = () => {
-    const { user } = useContext(Context);
+    const { user, setUser } = useContext(Context);
     const nav = useNavigate();
     const { email, name, status } = user;
     // const [isLoggedin, setIsLoggedin] = useState(false);
@@ -13,8 +13,8 @@ export const Person = () => {
 
     const logout = () => {
         localStorage.removeItem('user');
+        setUser({})
         nav('/auth');
-        window.location.reload();
     }
 
     // useEffect(() => {

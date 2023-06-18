@@ -20,7 +20,7 @@ const EmailSend = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         
-        api.emailSend(id, users)
+        api.emailSend(users)
             .then(res => setMsg(res.users))
     
             console.log(users, 'users')
@@ -28,11 +28,15 @@ const EmailSend = (props) => {
     };
 
     const onInputChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value });
+        setUser(prev => {
+            let obj = {...prev}
+            obj[e.target.name] = e.target.value;
+            return obj
+        });
     };
 
     return (
-        <form className='email-send' onClick={onSubmit}>
+        <form className='email-send' onSubmit={onSubmit}>
             <label>
                 <input
                     type='text'

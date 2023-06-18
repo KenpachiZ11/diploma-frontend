@@ -95,8 +95,8 @@ class API {
             .then(res => res.json())
     }
 
-    emailSend(id, data) {
-        return fetch(`${this.path}/about/${id}`, {
+    emailSend(data) {
+        return fetch(`${this.path}/about/id`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

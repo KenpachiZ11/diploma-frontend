@@ -6,6 +6,7 @@ import Context from '../../Context';
 
 export const Header = () => {
     const {user} = useContext(Context);
+    // console.log(user.status)
 
     return (
         <>
@@ -15,6 +16,9 @@ export const Header = () => {
                     <ul>
                         <li><NavLink to='/'>Главная</NavLink></li>
                         <li><NavLink to='/about'>Работы</NavLink></li>
+                        {user.status === 'author' && <li><NavLink to='/form'>Создать</NavLink></li>}
+                        {user.status === 'admin' && <li><NavLink to='/form'>Создать</NavLink></li>}
+                        {user.status === 'admin' && <li><NavLink to='/feedback-admin'>Обратная связь</NavLink></li>}
                         <li><NavLink to='/contacts'>Контакты</NavLink></li>
                         {user.email && <li><NavLink to='/person'><PersonCircle /></NavLink></li>}
                         {!user.email && <li><NavLink to='/auth'><BoxArrowInLeft /></NavLink></li>}
