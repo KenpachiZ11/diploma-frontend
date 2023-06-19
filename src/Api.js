@@ -1,6 +1,12 @@
 class API {
     constructor(path) {
-        this.path = 'https://danya.pewiwe.ru';
+        this.path = 'http://localhost:8000';
+        // this.path = 'https://danya.pewiwe.ru';
+    }
+
+    home() {
+        return fetch(`${this.path}`)
+            .then(res => res.json())
     }
 
     about() {

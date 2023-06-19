@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import Context from '../../Context';
 import './Home.scss';
 
 export const Home = () => {
+    const { api } = useContext(Context);
     const [message, setMessage] = useState([]);
 
     useEffect(() => {
-        fetch('https://danya.pewiwe.ru/')
-            .then(res => res.json())
+        api.home()
             .then(data => setMessage(data.message));
-    }, []);
+    }, [api]);
 
     console.log(message)
     return (
