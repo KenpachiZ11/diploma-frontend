@@ -17,13 +17,34 @@ export const Person = () => {
         nav('/auth');
     }
 
+    const create = () => {
+        nav('/form');
+    }
+
     // useEffect(() => {
         // logout();
     // }, [user]);
 
     return (
         <div className='person-page'>
+            <div className='person-page__logo'>
+                <img src={iconsAuthor} alt='person'></img>
+            </div>
             <div className='person-page__info'>
+                <div>name: {name}</div>
+                <div>email: {email}</div>
+                <div>status: {status}</div>
+            </div>
+            <div className='person-page__buttons'>
+                {
+                    user.status === 'author' || 
+                    user.status === 'admin' 
+                    ? <button onClick={() => create()}>Создать</button> : null
+                }
+                <button onClick={() => logout()}>Выйти</button>
+            </div>
+            <div className='person-page__order'></div>
+            {/* <div className='person-page__info'>
                 <div>
                     <div>name: {name}</div>
                     <div>email: {email}</div>
@@ -34,7 +55,7 @@ export const Person = () => {
                     <img src={iconsAuthor} alt='person'></img>
                 </div>
             </div>
-            <div className='person-page__product'></div>
+            <div className='person-page__product'></div> */}
         </div>
     )
 }

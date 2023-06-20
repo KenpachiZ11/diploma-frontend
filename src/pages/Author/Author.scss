@@ -1,0 +1,27 @@
+.author-page {
+	width: 90vw;
+	margin: 20px auto 20px;
+	display: grid;
+	gap: 50px;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-auto-flow: dense;
+	// grid-auto-rows: 400px;
+	// background: grey;
+	box-sizing: border-box;
+
+	&__content {
+		width: 100%;
+		height: 100%;
+
+		&-box {
+			width: 100%;
+			height: 100%;
+			h1 {
+				text-align: center;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

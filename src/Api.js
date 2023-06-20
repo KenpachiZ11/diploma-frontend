@@ -15,9 +15,14 @@ class API {
     }
 
     aboutId(id) {
-        return fetch(`${this.path}/about${id}`)
+        return fetch(`${this.path}/about/${id}`)
             .then(res => res.json())
     }
+
+    // authorId(id) {
+    //     return fetch(`${this.path}/author/${id}`)
+    //         .then(res => res.json())
+    // }
 
     contactsAdd(data) {
         return fetch(`${this.path}/contacts`, {

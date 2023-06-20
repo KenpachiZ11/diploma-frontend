@@ -3,11 +3,11 @@ import Context from '../../Context';
 import './FormCard.scss';
 
 export const FormCard = () => {
-    const {api} = useContext(Context);
+    const {api, user} = useContext(Context);
     const form = useRef(null);
-    const [message, setMessage] = useState([]);
     const [inputs, setInputs] = useState({
-        author: null,
+        author: user.name,
+        userEmail: user.email,
         title: null,
         description: null,
         linkImage: null
@@ -16,18 +16,20 @@ export const FormCard = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { author, title, description, linkImage } = inputs;
+        const { author, title, description, linkImage, userEmail } = inputs;
 
-        if(!author || !title || !description || !linkImage) {
+        if(!title || !description || !linkImage) {
             alert('Поля не могут быть путыми');
             return false;
         }
 
-        api.formCard({author, title, description, linkImage})
+        api.formCard({author, title, description, linkImage, userEmail})
             .then(json => setInputs(json.inputs))
 
+        // user.content.push(inputs);
         setInputs('');
     }
+
 
     const handleChange = (e) => {
         // console.log(e)
@@ -39,16 +41,18 @@ export const FormCard = () => {
     return (
         <div className='form-page'>
             <form ref={form} onSubmit={handleSubmit}>
-            <label>
+                <h3>Имя автора: {user.name}</h3>
+                <h3>Почта автора: {user.email}</h3>
+            {/* <label> */}
                 {/* <h4>author</h4> */}
-                <input 
+                {/* <input 
                     type="text" 
                     placeholder='author'
                     name="author"
-                    value={inputs.author || ''}
+                    value={user.name || ''}
                     onChange={handleChange}
                 />
-            </label>
+            </label> */}
             <label>
                 {/* <h4>title</h4> */}
                 <input 

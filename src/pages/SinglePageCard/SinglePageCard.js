@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import './SinglePageCard.scss';
 import Context from '../../Context';
 import { Button } from '../../components/Button/Button';
 import { Modal } from '../../components/Modal/Modal';
 
 export const SinglePageCard = () => {
-    const {api} = useContext(Context);
+    const {api, user, content} = useContext(Context);
     const { id } = useParams();
     const [newPostData, setNewPostData] = useState([]);
     const [info, setInfo] = useState('Заказать работу');
     const [active, setActive] = useState(false);
+    // const [data, setData] = useState(content);
+    // const location = useLocation();
 
     useEffect(() => {
         api.singlePage(id)
@@ -43,14 +45,24 @@ export const SinglePageCard = () => {
                     <div className='single-page__card'>
                         <div className='single-page__card-title'>{title}</div>
                         <div className='single-page__card-description'>{description}</div>
-                        <div className='single-page__card-author'>Author: {author}</div>
+                        <div className='single-page__card-author'>Автор: 
+                            <Link 
+                                to={`/author/${user._id}`} 
+                                content={content}
+                                // state={{data: data}}
+                            >
+                                {author}
+                            </Link> </div>
                     </div>
-                    <div className='single-page__button'>
-                        <Button 
-                            info={info} 
-                            setActive={setActive}
-                        />
-                    </div> 
+                    {
+                        user.status === 'user' &&
+                            <div className='single-page__button'>
+                                <Button 
+                                    info={info} 
+                                    setActive={setActive}
+                                />
+                            </div> 
+                    }
                     {
                         active ? <Modal 
                             newPostData={newPostData} 

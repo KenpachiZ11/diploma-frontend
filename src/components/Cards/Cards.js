@@ -6,26 +6,47 @@ import { DataNull } from '../DataNull/DataNull';
 import { FilterComponentsCard } from '../FilterComponentsCard/FilterComponentsCard';
 
 const Cards = () => {
-    const {api} = useContext(Context);
+    const {api, content, setContent} = useContext(Context);
     const [newPostData, setNewPostData] = useState([]);
-    const [filter, setFilter] = useState(newPostData);
+    const [filter, setFilter] = useState(content);
+
+    
+    // let id = null;
+
+    // content.map(el => {
+    //     const { _id } = el;
+
+    // });
+    // console.log(id)
+    // useEffect(() => {
+    //     api.about()
+    //     .then(data => setNewPostData(data))
+    // }, [api]);
 
     useEffect(() => {
-        api.about()
-        .then(data => setNewPostData(data))
-    }, []);
-    useEffect(() => {
-        setFilter(newPostData);
-    }, [newPostData])
+        setContent(prev => {
+            return {
+                ...prev,
+                content
+            }
+        })
+    }, [])
 
+    
+    useEffect(() => {
+        setFilter(content);
+    }, [content]);
+    
+    // console.log(content)
 
     const handleFilterItem = (e) => {
         const searchItem = e.target.value.toLowerCase();
-        setFilter(newPostData.filter(el => el.title.toLowerCase().includes(searchItem)));
+        setFilter(content.filter(el => el.title.toLowerCase().includes(searchItem)));
     };
 
-    console.log(filter, 'filter');
-    console.log(newPostData, 'newPostData');
+    // console.log(filter, 'filter');
+    // console.log(content, 'content');
+    // console.log(newPostData, 'newPostData');
 
     return (
         <>  
@@ -37,7 +58,10 @@ const Cards = () => {
                         <div className='about-page__grid'><Card newPostData={filter}/></div>
                     </>
                     : 
+                    <>
+                        <FilterComponentsCard onChange={handleFilterItem}/>
                         <DataNull/>
+                    </>
             }
         </>
     )
