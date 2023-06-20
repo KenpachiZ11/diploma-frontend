@@ -3,7 +3,7 @@ import Context from '../../Context';
 import './FormCard.scss';
 
 export const FormCard = () => {
-    const {api, user} = useContext(Context);
+    const {api, user, setContent} = useContext(Context);
     const form = useRef(null);
     const [inputs, setInputs] = useState({
         author: user.name,
@@ -24,7 +24,10 @@ export const FormCard = () => {
         }
 
         api.formCard({author, title, description, linkImage, userEmail})
-            .then(json => setInputs(json.inputs))
+            .then(json => {
+                setInputs(json)
+                setContent(prev => [...prev, json])
+            })
 
         // user.content.push(inputs);
         setInputs('');

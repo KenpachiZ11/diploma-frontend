@@ -6,8 +6,8 @@ import { DataNull } from '../DataNull/DataNull';
 import { FilterComponentsCard } from '../FilterComponentsCard/FilterComponentsCard';
 
 const Cards = () => {
-    const {api, content, setContent} = useContext(Context);
-    const [newPostData, setNewPostData] = useState([]);
+    const {content} = useContext(Context);
+    // const [newPostData, setNewPostData] = useState([]);
     const [filter, setFilter] = useState(content);
 
     
@@ -23,12 +23,6 @@ const Cards = () => {
     //     .then(data => setNewPostData(data))
     // }, [api]);
 
-    useEffect(() => {
-        setContent(prev => {
-            [...prev], filter
-        })
-    }, [])
-    
     useEffect(() => {
         setFilter(content);
     }, [content]);
