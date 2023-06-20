@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/diploma-frontend/static/css/main.7e7b5066.css",
-    "main.js": "/diploma-frontend/static/js/main.29d61c7f.js",
+    "main.css": "/diploma-frontend/static/css/main.214bd368.css",
+    "main.js": "/diploma-frontend/static/js/main.51aa9aac.js",
     "static/media/ImageForHome.jpg": "/diploma-frontend/static/media/ImageForHome.15bba72786d7b2ed7035.jpg",
     "static/media/check.jpg": "/diploma-frontend/static/media/check.1ea7b712a8e0c448c057.jpg",
     "static/media/author.jpg": "/diploma-frontend/static/media/author.b956764029a7c57adede.jpg",
     "static/media/repair.jpg": "/diploma-frontend/static/media/repair.f95985785d4f75ac88cc.jpg",
     "index.html": "/diploma-frontend/index.html",
-    "main.7e7b5066.css.map": "/diploma-frontend/static/css/main.7e7b5066.css.map",
-    "main.29d61c7f.js.map": "/diploma-frontend/static/js/main.29d61c7f.js.map"
+    "main.214bd368.css.map": "/diploma-frontend/static/css/main.214bd368.css.map",
+    "main.51aa9aac.js.map": "/diploma-frontend/static/js/main.51aa9aac.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e7b5066.css",
-    "static/js/main.29d61c7f.js"
+    "static/css/main.214bd368.css",
+    "static/js/main.51aa9aac.js"
   ]
 }
