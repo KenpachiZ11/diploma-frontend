@@ -25,13 +25,9 @@ const Cards = () => {
 
     useEffect(() => {
         setContent(prev => {
-            return {
-                ...prev,
-                content
-            }
+            [...prev], filter
         })
     }, [])
-
     
     useEffect(() => {
         setFilter(content);
