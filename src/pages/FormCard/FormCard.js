@@ -23,13 +23,17 @@ export const FormCard = () => {
             return false;
         }
 
+        // setContent(prev => [...prev, {author, title, description, linkImage, userEmail}])
         api.formCard({author, title, description, linkImage, userEmail})
             .then(json => {
                 setInputs(json)
-                setContent(prev => [...prev, json])
             })
+            
+        setTimeout(() => {
+            api.about()
+                .then(json => setContent(json));
+        }, 1000);
 
-        // user.content.push(inputs);
         setInputs('');
     }
 

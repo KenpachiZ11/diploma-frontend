@@ -40,7 +40,7 @@ const EmailSend = (props) => {
             <label>
                 <input
                     type='text'
-                    placeholder='Email'
+                    placeholder='Ваша почта'
                     name='to'
                     onChange={onInputChange}
                     value={to}
@@ -50,7 +50,7 @@ const EmailSend = (props) => {
             <label>
                 <input
                     type='text'
-                    placeholder='Subject'
+                    placeholder='Тема письма'
                     name='subject'
                     onChange={onInputChange}
                     value={subject}

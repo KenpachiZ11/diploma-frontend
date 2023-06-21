@@ -6,7 +6,7 @@ import { Button } from '../../components/Button/Button';
 import { Modal } from '../../components/Modal/Modal';
 
 export const SinglePageCard = () => {
-    const {api, user, content} = useContext(Context);
+    const {api, user, content, authors} = useContext(Context);
     const { id } = useParams();
     const [newPostData, setNewPostData] = useState([]);
     const [info, setInfo] = useState('Заказать работу');
@@ -14,12 +14,14 @@ export const SinglePageCard = () => {
     // const [data, setData] = useState(content);
     // const location = useLocation();
 
+    // const linkId = data.filter(el => json.filter(d => d.userEmail === el.email).length)
+
     useEffect(() => {
         api.singlePage(id)
         .then(res => setNewPostData(res))
     }, [id]);
 
-    const { title, description, author, linkImage } = newPostData;
+    const { title, description, author, linkImage, userEmail } = newPostData;
 
     useEffect(() => {
         setInfo(info);
@@ -47,7 +49,7 @@ export const SinglePageCard = () => {
                         <div className='single-page__card-description'>{description}</div>
                         <div className='single-page__card-author'>Автор: 
                             <Link 
-                                to={`/author/${user._id}`} 
+                                to={`/author/${userEmail}`} 
                                 content={content}
                                 // state={{data: data}}
                             >
@@ -64,11 +66,12 @@ export const SinglePageCard = () => {
                             </div> 
                     }
                     {
-                        active ? <Modal 
-                            newPostData={newPostData} 
-                            active={active} 
-                            setActive={setActive}
-                        /> : ''
+                        active ? 
+                            <Modal 
+                                newPostData={newPostData} 
+                                active={active} 
+                                setActive={setActive}
+                            /> : ''
                     }
                 </div>
                 :

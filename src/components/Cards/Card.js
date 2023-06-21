@@ -9,7 +9,7 @@ export const Card = ({ newPostData }) => {
             display = '404 Not Found!'
         }
 
-        display = newPostData.map(result => {
+        display = newPostData.map((result, index) => {
             const { _id, title, linkImage} = result;
 
             return (
